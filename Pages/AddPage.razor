@@ -1,0 +1,27 @@
+@page "/addpage"
+@using cms.Data
+@inject CustomPageService customPageService
+@inject NavigationManager navigationManager
+
+<form>
+    <div class="form-group">
+        <input type="button" class="btn btn-primary" @onclick="@CreatePage" value="Save"/>
+        <input type="button" class="btn btn-primary" @onclick="@goToF" value="Go"/>
+    </div>
+</form>
+
+@code{
+    CustomPage obj = new CustomPage();
+    protected async void CreatePage()
+    {   
+        obj.PageHeading = "Hero";
+        obj.Body="Test Datatata";
+        obj.PageName = "HeroPage";
+        await customPageService.InsertCustomPageAsync(obj);
+        //navigationManager.NavigateTo("Employees");
+    }
+
+    private void goToF(){
+        navigationManager.NavigateTo("counter");
+    }
+}
