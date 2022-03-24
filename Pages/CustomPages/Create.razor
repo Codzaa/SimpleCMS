@@ -2,6 +2,8 @@
 @using Data
 @inject NavigationManager navigationManager
 @inject IJSRuntime _jsruntime
+@inject AppDBContext _appDBContext
+@inject NavigationManager _navigationManager
 
 <EditForm Model="_pageToCreate" OnValidSubmit="CreatePage">
     
@@ -38,6 +40,7 @@
 
     /// Function that runs after the first render
     /// Runs once
+    //[Inject] ApplicationDbContext ApplicationDbContext { get; set; }
     private CustomPage _pageToCreate = new CustomPage
     {
        PageName = "Page Name",
@@ -72,17 +75,17 @@
         {
             await SaveVideo_F();
         }
+        */
 
         //Call Javascript Function to Get Save Editor Data
-        _productToCreate.content = await JSRuntime.InvokeAsync<string>("SaveEditorData_F");
+        _pageToCreate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
         //Save Images Data
-        await SaveImages_F();
+        //await SaveImages_F();
         //
-        FixRelatedProducts_F();
-        await ApplicationDbContext.Products.AddAsync(_productToCreate);
-        await ApplicationDbContext.SaveChangesAsync();
-        NavigationManager.NavigateTo("/admin/products");
-        */
+        await _appDBContext.CustomPages.AddAsync(_pageToCreate);
+        await _appDBContext.SaveChangesAsync();
+        //NavigationManager.NavigateTo("/admin/products");
+        
 
     }
 }

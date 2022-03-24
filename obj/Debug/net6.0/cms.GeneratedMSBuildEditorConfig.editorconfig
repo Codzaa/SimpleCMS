@@ -23,12 +23,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/AuthPages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aFBhZ2VzL0xvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/AuthPages/Signup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aFBhZ2VzL1NpZ251cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/CustomPages/Create.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3VzdG9tUGFnZXMvQ3JlYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/CustomPages/Update.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3VzdG9tUGFnZXMvVXBkYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/Dashboard/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkL0hvbWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/FetchData.razor]

@@ -9,7 +9,9 @@ namespace cms.Data
         {
 
         }
-        public DbSet<CustomPage> CustomPages { get; set; }
+        public DbSet<CustomPage>? CustomPages { get; set; }
+        public DbSet<CustomUser>? CustomUsers {get;set;}
+        public DbSet<CustomSite>? CustomSites {get;set;}
     }
     
 }

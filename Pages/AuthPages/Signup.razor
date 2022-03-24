@@ -1,0 +1,57 @@
+@page "/signup"
+@using Data
+@inject AppDBContext _appDBContext
+@inject NavigationManager _navigationManager
+@using Microsoft.EntityFrameworkCore;
+
+<EditForm Model="_userToCreate" OnValidSubmit="CreateUser">
+<h2 class="text-center">Sign Up</h2>
+    <div class="mb-3">
+      <label for="Username" class="form-label">Email address</label>
+      <input @bind="_userToCreate.UserName" type="text" class="form-control" id="Username" aria-describedby="UsernameHelp">
+      
+      <div id="UsernameHelp" class="form-text">Choose a unique Username</div>
+    </div>
+    <div class="mb-3">
+      <label for="Password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password">
+    </div>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <button type="submit" class="btn btn-primary">Signup</button>
+</EditForm>
+
+@code{
+
+    private CustomUser _userToCreate = new CustomUser
+    {
+       UserName = "Username",
+       UserPassword = "Password",
+       UserNickName = "Usernickname",
+    };
+
+    private async Task CreateUser(){
+        /// Check if the user already exists in the Database
+        var doesUserExist = await UserExits();
+        ///
+        if(!doesUserExist){
+            Console.WriteLine("User Does not Exits");
+            await _appDBContext.CustomUsers.AddAsync(_userToCreate);
+            await _appDBContext.SaveChangesAsync();
+            _navigationManager.NavigateTo("/dashboard/home");
+        }else{
+            /// Display Message
+            Console.WriteLine("User Exits");
+        }
+        
+    }
+
+    private async Task<bool> UserExits(){
+        bool result = false;
+        var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToCreate.UserName));
+        if(user != null){
+            result = true;
+        }
+        return result;
+    }
+}

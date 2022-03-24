@@ -12,6 +12,39 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
+        "HashCode": -325092438,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AddPage",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "AddPage"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AddPage"
+        }
+      },
+      {
+        "HashCode": -1712278585,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AddPage",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.AddPage"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AddPage",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -206106710,
         "Kind": "Components.Component",
         "Name": "cms.Pages.Counter",
@@ -111,35 +144,35 @@
         }
       },
       {
-        "HashCode": -325092438,
+        "HashCode": -1600491810,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.AddPage",
+        "Name": "cms.Pages.CustomPages.Update",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "AddPage"
+            "TagName": "Update"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AddPage"
+          "Common.TypeName": "cms.Pages.CustomPages.Update"
         }
       },
       {
-        "HashCode": -1712278585,
+        "HashCode": 147505396,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.AddPage",
+        "Name": "cms.Pages.CustomPages.Update",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "cms.Pages.AddPage"
+            "TagName": "cms.Pages.CustomPages.Update"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AddPage",
+          "Common.TypeName": "cms.Pages.CustomPages.Update",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -173,6 +206,191 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "cms.Pages.CustomPages.Create",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -453995817,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.Home",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Home"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.Home"
+        }
+      },
+      {
+        "HashCode": -239645932,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.Home",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.Dashboard.Home"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.Home",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1218079586,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Login",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Login"
+        }
+      },
+      {
+        "HashCode": 1745136542,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Login",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.AuthPages.Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Login",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1250966482,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Signup",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Signup"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Signup"
+        }
+      },
+      {
+        "HashCode": -674768243,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Signup",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.AuthPages.Signup"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Signup",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1596917070,
+        "Kind": "Components.Component",
+        "Name": "cms.App",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.App"
+        }
+      },
+      {
+        "HashCode": 918258662,
+        "Kind": "Components.Component",
+        "Name": "cms.App",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1063949779,
+        "Kind": "Components.Component",
+        "Name": "cms.Shared.SurveyPrompt",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -1725332886,
+        "Kind": "Components.Component",
+        "Name": "cms.Shared.SurveyPrompt",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -302,92 +520,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "cms.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1063949779,
-        "Kind": "Components.Component",
-        "Name": "cms.Shared.SurveyPrompt",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -1725332886,
-        "Kind": "Components.Component",
-        "Name": "cms.Shared.SurveyPrompt",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1596917070,
-        "Kind": "Components.Component",
-        "Name": "cms.App",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.App"
-        }
-      },
-      {
-        "HashCode": 918258662,
-        "Kind": "Components.Component",
-        "Name": "cms.App",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16683,9 +16815,29 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/Dashboard/Home.razor",
+      "TargetPath": "Pages\\Dashboard\\Home.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/AuthPages/Login.razor",
+      "TargetPath": "Pages\\AuthPages\\Login.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/CustomPages/Update.razor",
+      "TargetPath": "Pages\\CustomPages\\Update.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/AuthPages/Signup.razor",
+      "TargetPath": "Pages\\AuthPages\\Signup.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/AddPage.razor",
