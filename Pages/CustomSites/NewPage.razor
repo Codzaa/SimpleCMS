@@ -11,6 +11,7 @@
 <EditForm Model="_pageToCreate" OnValidSubmit="CreatePageF">
 
     <InputSelect @bind-Value="CurrentSiteId" @onchange="CheckSiteNameF" class="form-control" col-3>
+    <label for="pageSiteId" class="form-label">Choose Website</label>
         @if (_mySites!= null){
             @foreach (var site in _mySites){
                 <option value =@site.Id.ToString()>@site.SiteName + @site.Id</option>
@@ -19,9 +20,22 @@
     </InputSelect>
 
     <div class="mb-3">
-        <label for="pageBody" class="form-label">Email address</label>
-        <input type="text" @bind="_pageToCreate.Body" class="form-control" id="editor" aria-describedby="pageBodyHelp">
+        <label for="pageName" class="form-label">Page Name</label>
+        <input type="text" @bind="_pageToCreate.PageName" class="form-control" aria-describedby="PageNameHelp">
     </div>
+
+    <div class="mb-3">
+        <label for="pageHeading" class="form-label">Page Heading</label>
+        <input type="text" @bind="_pageToCreate.PageHeading" class="form-control" aria-describedby="PageHeadingHelp">
+    </div>
+
+    
+
+    <div class="mb-3">
+        <label for="pageHeading" class="form-label">Page Body</label>
+        <input type="text" @bind="_pageToCreate.Body" class="form-control" id="editor" aria-describedby="PageHeadingHelp">
+    </div>
+    
 
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -75,15 +89,17 @@
 
     /// Function/Method for Creating a Page
     private async Task CreatePageF(){
+        /// Set Current Site Id
+        _pageToCreate.SiteId = int.Parse(CurrentSiteId);
         Console.WriteLine("Site Id" + CurrentSiteId);
-        /*
+        
         //Call Javascript Function to Get Save Editor Data
         _pageToCreate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
         //
         await _appDBContext.CustomPages.AddAsync(_pageToCreate);
         await _appDBContext.SaveChangesAsync();
-        _navigationManager.NavigateTo("/admin/pages/normalpages");
-        */
+        _navigationManager.NavigateTo("/dashboard/home");
+        
     }
 
     public async void StartEditor_F()

@@ -21,6 +21,11 @@
         <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
     </div>
 
+    <div class="mb-3">
+        <label for="homeView" class="form-label">Home View</label>
+        <input type="text" @bind="_siteToCreate.SiteHomePage" class="form-control" id="editor" aria-describedby="homeViewHelp">
+    </div>
+
     <DataAnnotationsValidator />
     <ValidationSummary />
     <button class="btn btn-primary" type="submit">Save</button>
@@ -36,12 +41,30 @@
        SiteName = "",
        SiteDescription = "",
     };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            /// Create Editor when the Page has been rendered
+            StartEditor_F();
+            //
+            StateHasChanged();
+
+        }
+    }
+    public async void StartEditor_F()
+    {
+
+        await _jsruntime.InvokeVoidAsync("StartEditor_F");
+    }
     private async Task CreateSiteF()
     {
         /// Set the Owner Id
         /// To the user who is logged in
         _siteToCreate.OwnerId = _userService.GlobalUser.Id;
-        ///
+        ///Call Javascript Function to Get Save Editor Data
+        _siteToCreate.SiteHomePage = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
         await _appDBContext.CustomSites.AddAsync(_siteToCreate);
         await _appDBContext.SaveChangesAsync();
         _navigationManager.NavigateTo("/dashboard/home");

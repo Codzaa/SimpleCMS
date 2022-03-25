@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0YE0uE2oHIHctUioZo2aX1kax6RngmcflpssYr8qn6U=",
+  "Hash": "Ce47LT+/Yc/Ja/kbmEI/pYGrMDYsLBCuBH5B4MMZKT8=",
   "Source": "cms",
   "BasePath": "_content/cms",
   "Mode": "Default",
@@ -270,6 +270,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/voiceless/Documents/Projects/Tanya/App/cms/wwwroot/images/1437917907.jpg",
+      "SourceId": "cms",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/voiceless/Documents/Projects/Tanya/App/cms/wwwroot/",
+      "BasePath": "_content/cms",
+      "RelativePath": "images/1437917907.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/1437917907.jpg"
+    },
+    {
+      "Identity": "/home/voiceless/Documents/Projects/Tanya/App/cms/wwwroot/images/539516056.jpg",
+      "SourceId": "cms",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/voiceless/Documents/Projects/Tanya/App/cms/wwwroot/",
+      "BasePath": "_content/cms",
+      "RelativePath": "images/539516056.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/539516056.jpg"
     },
     {
       "Identity": "/home/voiceless/Documents/Projects/Tanya/App/cms/wwwroot/images/groupChat.png",

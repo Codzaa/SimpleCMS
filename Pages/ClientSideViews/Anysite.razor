@@ -1,0 +1,91 @@
+@page "/site/{sitename}"
+@using cms.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDBContext _appDbContext
+@inject NavigationManager _navigationManager
+
+
+@if(!customPageActive){
+    @if(_site != null){
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">@_site.SiteName</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/site/@_site.SiteName">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Pages
+            </a>
+                @if(sitePages != null){
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach (var item in sitePages)
+                        {
+                            <li><a class="dropdown-item" @onclick="@(e => GoToPage(@item.Id))"> @item.PageName </a></li> 
+                            <li><hr class="dropdown-divider"></li> 
+                        }
+                        
+                        <li><a class="dropdown-item" href="#">Default</a></li>
+                    </ul>
+                }
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+        <br>
+        <body>
+            @((MarkupString)_site.SiteHomePage)
+        </body>
+    }
+}else{
+    @((MarkupString)_activePage.Body)
+}
+
+
+@code{
+    
+    [Parameter]
+    public string sitename{get;set;}
+    private CustomSite _site = new CustomSite();
+    private CustomPage _activePage = new CustomPage();
+    private bool customPageActive = false;
+    protected override async Task OnInitializedAsync()
+    {
+        await GetPage_T();
+    }
+    
+
+    //Update Current Product
+    private async Task GetPage_T()
+    {
+        //var getSites =  await _appDbContext.CustomSites.ToListAsync();
+        //_site = getSites.FindAll(element => element.SiteName.Equals(sitename));
+        _site = await _appDbContext.CustomSites.FirstOrDefaultAsync(element => element.SiteName.Equals(sitename));
+        //
+        await SetUpPages();
+        StateHasChanged();
+
+    }
+
+    /// Function for getting the pages for the current website
+    private List<CustomPage> sitePages = new List<CustomPage>();
+    private async Task SetUpPages(){
+
+        var allPages = await _appDbContext.CustomPages.ToListAsync();
+        sitePages = allPages.FindAll(element => element.SiteId.Equals(_site.Id));
+    }
+
+    private async Task GoToPage(int pageId){
+        _activePage = await _appDbContext.CustomPages.FindAsync(pageId);
+        customPageActive = true;
+        StateHasChanged();
+        //_navigationManager.NavigateTo("/dashboard/home");
+    }
+
+}

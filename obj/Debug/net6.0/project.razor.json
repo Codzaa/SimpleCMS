@@ -12,35 +12,35 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1218079586,
+        "HashCode": -325092438,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.AuthPages.Login",
+        "Name": "cms.Pages.AddPage",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Login"
+            "TagName": "AddPage"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AuthPages.Login"
+          "Common.TypeName": "cms.Pages.AddPage"
         }
       },
       {
-        "HashCode": 1745136542,
+        "HashCode": -1712278585,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.AuthPages.Login",
+        "Name": "cms.Pages.AddPage",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "cms.Pages.AuthPages.Login"
+            "TagName": "cms.Pages.AddPage"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AuthPages.Login",
+          "Common.TypeName": "cms.Pages.AddPage",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -78,6 +78,39 @@
         }
       },
       {
+        "HashCode": -1218079586,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Login",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Login"
+        }
+      },
+      {
+        "HashCode": 1745136542,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.AuthPages.Login",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.AuthPages.Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.AuthPages.Login",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -206106710,
         "Kind": "Components.Component",
         "Name": "cms.Pages.Counter",
@@ -107,105 +140,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "cms.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2058343428,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.FetchData",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 1223896429,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.FetchData",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 243422503,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Index",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 1419111887,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Index",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -325092438,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.AddPage",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "AddPage"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AddPage"
-        }
-      },
-      {
-        "HashCode": -1712278585,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.AddPage",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.AddPage"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.AddPage",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -276,35 +210,68 @@
         }
       },
       {
-        "HashCode": -1451751158,
+        "HashCode": -2058343428,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.CreateSite",
+        "Name": "cms.Pages.FetchData",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CreateSite"
+            "TagName": "FetchData"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.CreateSite"
+          "Common.TypeName": "cms.Pages.FetchData"
         }
       },
       {
-        "HashCode": 1137893547,
+        "HashCode": 1223896429,
         "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.CreateSite",
+        "Name": "cms.Pages.FetchData",
         "AssemblyName": "cms",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "cms.Pages.CustomSites.CreateSite"
+            "TagName": "cms.Pages.FetchData"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.CreateSite",
+          "Common.TypeName": "cms.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 243422503,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Index",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 1419111887,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Index",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -338,6 +305,92 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "cms.Pages.CustomSites.NewPage",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1451751158,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.CreateSite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CreateSite"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.CreateSite"
+        }
+      },
+      {
+        "HashCode": 1137893547,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.CreateSite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.CustomSites.CreateSite"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.CreateSite",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -4391200,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.ClientSideViews.Anysite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Anysite"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "sitename",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "sitename"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.ClientSideViews.Anysite"
+        }
+      },
+      {
+        "HashCode": 88489450,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.ClientSideViews.Anysite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.ClientSideViews.Anysite"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "sitename",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "sitename"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.ClientSideViews.Anysite",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16842,6 +16895,11 @@
   },
   "RootNamespace": "cms",
   "Documents": [
+    {
+      "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/ClientSideViews/Anysite.razor",
+      "TargetPath": "Pages\\ClientSideViews\\Anysite.razor",
+      "FileKind": "component"
+    },
     {
       "FilePath": "/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
