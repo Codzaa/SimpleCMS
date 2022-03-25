@@ -144,72 +144,6 @@
         }
       },
       {
-        "HashCode": -453995817,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Dashboard.Home",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Home"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Dashboard.Home"
-        }
-      },
-      {
-        "HashCode": -239645932,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Dashboard.Home",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.Dashboard.Home"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Dashboard.Home",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -940706956,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Dashboard.MySites",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "MySites"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Dashboard.MySites"
-        }
-      },
-      {
-        "HashCode": -1596257526,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.Dashboard.MySites",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.Dashboard.MySites"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.Dashboard.MySites",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -2058343428,
         "Kind": "Components.Component",
         "Name": "cms.Pages.FetchData",
@@ -276,72 +210,6 @@
         }
       },
       {
-        "HashCode": -1671549177,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.NewPage",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NewPage"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.NewPage"
-        }
-      },
-      {
-        "HashCode": -578878380,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.NewPage",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.CustomSites.NewPage"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.NewPage",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1451751158,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.CreateSite",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CreateSite"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.CreateSite"
-        }
-      },
-      {
-        "HashCode": 1137893547,
-        "Kind": "Components.Component",
-        "Name": "cms.Pages.CustomSites.CreateSite",
-        "AssemblyName": "cms",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "cms.Pages.CustomSites.CreateSite"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "cms.Pages.CustomSites.CreateSite",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -4391200,
         "Kind": "Components.Component",
         "Name": "cms.Pages.ClientSideViews.Anysite",
@@ -391,6 +259,138 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "cms.Pages.ClientSideViews.Anysite",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -940706956,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.MySites",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MySites"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.MySites"
+        }
+      },
+      {
+        "HashCode": -1596257526,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.MySites",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.Dashboard.MySites"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.MySites",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -453995817,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.Home",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Home"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.Home"
+        }
+      },
+      {
+        "HashCode": -239645932,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.Dashboard.Home",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.Dashboard.Home"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.Dashboard.Home",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1451751158,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.CreateSite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CreateSite"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.CreateSite"
+        }
+      },
+      {
+        "HashCode": 1137893547,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.CreateSite",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.CustomSites.CreateSite"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.CreateSite",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1671549177,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.NewPage",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewPage"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.NewPage"
+        }
+      },
+      {
+        "HashCode": -578878380,
+        "Kind": "Components.Component",
+        "Name": "cms.Pages.CustomSites.NewPage",
+        "AssemblyName": "cms",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "cms.Pages.CustomSites.NewPage"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "cms.Pages.CustomSites.NewPage",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

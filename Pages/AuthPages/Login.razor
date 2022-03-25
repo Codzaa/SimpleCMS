@@ -39,7 +39,7 @@
         if(user != null){
           if(user.UserPassword == _userToLogin.UserPassword){
             /// Set Global User
-            await SetUser(_userToLogin);
+            await SetUser(user);
             /// Success
              _navigationManager.NavigateTo("/dashboard/home");
              return;

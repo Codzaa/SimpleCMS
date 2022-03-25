@@ -7,18 +7,18 @@
 
 <br>
 
-@if(_myWebsites.Count == 0){
+@if( _mysites.Count == 0){
 
     <h1 class="text-center">No Websites</h1>
 
 }
 
-@if(_myWebsites != null){
+@if( _mysites != null){
 
-    foreach (var site in _myWebsites)
+    foreach (var site in _mysites)
     {
         //Show the Sites
-        <li> @site.SiteName </li>
+        <li>@site.SiteName </li>
     }
 }
 
@@ -27,13 +27,14 @@
     /// After first Render
     /// Get User Websites from the Database
 
-    private List<CustomSite> _myWebsites = new List<CustomSite>();
+    private List<CustomSite> _mysites = new List<CustomSite>();
     protected override async Task OnInitializedAsync()
     {
         //await _appDbContext.CustomSites.Find(element => element.OwnerId == _userService.GlobalUser.Id);
         //var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToLogin.UserName));
         var sites = await _appDbContext.CustomSites.ToListAsync();
-        _myWebsites = sites.FindAll(element => element.OwnerId.Equals(_userService.GlobalUser.Id));
+        Console.WriteLine("My Id" + _userService.GlobalUser.Id);
+        _mysites = sites.FindAll(element => element.OwnerId.Equals(_userService.GlobalUser.Id));
     }
 }
 

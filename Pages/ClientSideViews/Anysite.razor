@@ -5,46 +5,47 @@
 @inject NavigationManager _navigationManager
 
 
-@if(!customPageActive){
-    @if(_site != null){
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">@_site.SiteName</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/site/@_site.SiteName">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Pages
-            </a>
-                @if(sitePages != null){
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @foreach (var item in sitePages)
-                        {
-                            <li><a class="dropdown-item" @onclick="@(e => GoToPage(@item.Id))"> @item.PageName </a></li> 
-                            <li><hr class="dropdown-divider"></li> 
-                        }
-                        
-                        <li><a class="dropdown-item" href="#">Default</a></li>
-                    </ul>
-                }
-            </li>
-        </ul>
-        </div>
+
+@if(_site != null){
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+    <a class="navbar-brand" @onclick="@(e => GoToPage(0))" >@_site.SiteName</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" @onclick="@(e => GoToPage(0))" aria-current="page" >Home</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pages
+        </a>
+            @if(sitePages != null){
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach (var item in sitePages)
+                    {
+                        <li><a class="dropdown-item" @onclick="@(e => GoToPage(@item.Id))"> @item.PageName </a></li> 
+                        <li><hr class="dropdown-divider"></li> 
+                    }
+                    
+                    <li><a class="dropdown-item" href="#">Default</a></li>
+                </ul>
+            }
+        </li>
+    </ul>
     </div>
-    </nav>
-        <br>
-        <body>
+</div>
+</nav>
+    <br>
+    <body>
+        @if(!customPageActive){
             @((MarkupString)_site.SiteHomePage)
-        </body>
-    }
-}else{
-    @((MarkupString)_activePage.Body)
+        }else{
+            @((MarkupString)_activePage.Body)
+        }
+    </body>
 }
 
 
@@ -82,9 +83,18 @@
     }
 
     private async Task GoToPage(int pageId){
-        _activePage = await _appDbContext.CustomPages.FindAsync(pageId);
-        customPageActive = true;
-        StateHasChanged();
+        switch (pageId)
+        {
+            case 0:
+                customPageActive = false;
+                break;
+            default:
+                _activePage = await _appDbContext.CustomPages.FindAsync(pageId);
+                customPageActive = true;
+                StateHasChanged();
+                break;
+        }
+        
         //_navigationManager.NavigateTo("/dashboard/home");
     }
 

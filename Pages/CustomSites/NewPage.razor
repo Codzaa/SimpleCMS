@@ -81,6 +81,8 @@
             //Create Editor when the Page has been rendered
             StartEditor_F();
             //
+            CurrentSiteId = _mySites.FirstOrDefault().Id.ToString();
+            //
             StateHasChanged();
 
         }
@@ -90,8 +92,9 @@
     /// Function/Method for Creating a Page
     private async Task CreatePageF(){
         /// Set Current Site Id
-        _pageToCreate.SiteId = int.Parse(CurrentSiteId);
         Console.WriteLine("Site Id" + CurrentSiteId);
+        _pageToCreate.SiteId = int.Parse(CurrentSiteId);
+        
         
         //Call Javascript Function to Get Save Editor Data
         _pageToCreate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
