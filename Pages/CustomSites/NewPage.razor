@@ -5,24 +5,18 @@
 @inject IJSRuntime _jsruntime
 @inject AppDBContext _appDBContext
 @inject NavigationManager _navigationManager
+@inject UserService _userService
 
 
 <EditForm Model="_pageToCreate" OnValidSubmit="CreatePageF">
 
-    <select class="form-select" aria-label="Default select example">
-        @foreach (var item in _mySites)
-        {
-           <option value=@item.SiteName>@item.SiteName</option> 
+    <InputSelect @bind-Value="CurrentSiteId" @onchange="CheckSiteNameF" class="form-control" col-3>
+        @if (_mySites!= null){
+            @foreach (var site in _mySites){
+                <option value =@site.Id.ToString()>@site.SiteName + @site.Id</option>
+            }
         }
-
-        @*
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        *@
-        
-    </select>
+    </InputSelect>
 
     <div class="mb-3">
         <label for="pageBody" class="form-label">Email address</label>
@@ -41,8 +35,23 @@
 
     /// Page to be save Object
     private CustomPage _pageToCreate = new CustomPage{
-
+        SiteId = 1,
     };
+
+    /// 
+    private string? currentSiteId = null;
+    private string? CurrentSiteId
+    {
+        get
+        {
+        return currentSiteId;
+        }
+        set
+        {
+        currentSiteId = value;
+        //run your process here to handle dropdown changes
+        }
+    }
 
     /// List of all the websites a the user owns
     private List<CustomSite> _mySites = new List<CustomSite>();
@@ -53,7 +62,8 @@
         if (firstRender)
         {
             /// Get all the Websites
-            _mySites = await _appDBContext.CustomSites.ToListAsync();
+            var sites =  await _appDBContext.CustomSites.ToListAsync();
+            _mySites = sites.FindAll(element => element.OwnerId.Equals(_userService.GlobalUser.Id));
             //Create Editor when the Page has been rendered
             StartEditor_F();
             //
@@ -65,12 +75,15 @@
 
     /// Function/Method for Creating a Page
     private async Task CreatePageF(){
+        Console.WriteLine("Site Id" + CurrentSiteId);
+        /*
         //Call Javascript Function to Get Save Editor Data
         _pageToCreate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
         //
         await _appDBContext.CustomPages.AddAsync(_pageToCreate);
         await _appDBContext.SaveChangesAsync();
         _navigationManager.NavigateTo("/admin/pages/normalpages");
+        */
     }
 
     public async void StartEditor_F()
@@ -78,6 +91,10 @@
 
         await _jsruntime.InvokeVoidAsync("StartEditor_F");
     }
+
+    private async void CheckSiteNameF(){
+        Console.WriteLine("Site Id" + CurrentSiteId);
+    }   
 
 
 }
