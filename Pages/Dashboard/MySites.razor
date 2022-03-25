@@ -1,0 +1,41 @@
+@page "/dashboard/sites"
+@using cms.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDBContext _appDbContext
+@inject UserService _userService
+
+
+<br>
+
+@if(_myWebsites.Count == 0){
+
+    <h1 class="text-center">No Websites</h1>
+
+}
+
+@if(_myWebsites != null){
+
+    foreach (var site in _myWebsites)
+    {
+        //Show the Sites
+        <li> @site.SiteName </li>
+    }
+}
+
+@code{
+
+    /// After first Render
+    /// Get User Websites from the Database
+
+    private List<CustomSite> _myWebsites = new List<CustomSite>();
+    protected override async Task OnInitializedAsync()
+    {
+        //await _appDbContext.CustomSites.Find(element => element.OwnerId == _userService.GlobalUser.Id);
+        //var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToLogin.UserName));
+        var sites = await _appDbContext.CustomSites.ToListAsync();
+        _myWebsites = sites.FindAll(element => element.OwnerId.Equals(_userService.GlobalUser.Id));
+    }
+}
+
+
+

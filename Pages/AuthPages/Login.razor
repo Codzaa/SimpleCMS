@@ -1,20 +1,59 @@
 @page "/login"
+@using Data
+@inject AppDBContext _appDBContext
+@inject NavigationManager _navigationManager
+@inject UserService _userService
+@using Microsoft.EntityFrameworkCore;
 
-
+<EditForm Model="_userToLogin" OnValidSubmit="LoginF">
 <h2 class="text-center">Login</h2>
-  <form>
+
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <label for="Username" class="form-label">Username</label>
+      <input @bind="_userToLogin.UserName" type="text" class="form-control" id="Username" aria-describedby="UsernameHelp"> 
     </div>
+
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label for="Password" class="form-label">Password</label>
+      <input @bind="_userToLogin.UserPassword" type="password" class="form-control" id="Password">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</EditForm>
+
+@code{
+
+    private CustomUser _userToLogin = new CustomUser
+    {
+       UserName = "",
+       UserPassword = "",
+    };
+
+    /// Function/Method for Creating a User
+    private async Task LoginF(){
+        ///
+        var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToLogin.UserName));
+        ///
+        if(user != null){
+          if(user.UserPassword == _userToLogin.UserPassword){
+            /// Set Global User
+            await SetUser(_userToLogin);
+            /// Success
+             _navigationManager.NavigateTo("/dashboard/home");
+             return;
+          }
+          return;
+        }
+        Console.WriteLine("User Does not Exits");
+    }
+
+    /// Set Global User
+    private async Task SetUser(CustomUser user){
+        /// await _userService.SetGlobalUser(user);
+        _userService.GlobalUser = user;
+        Console.WriteLine("GLOBAL USER IS " + _userService.GlobalUser.UserName);
+    }
+}
+

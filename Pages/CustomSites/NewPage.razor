@@ -1,0 +1,83 @@
+@page "/newpage"
+@using Microsoft.JSInterop
+@using cms.Data
+@using Microsoft.EntityFrameworkCore
+@inject IJSRuntime _jsruntime
+@inject AppDBContext _appDBContext
+@inject NavigationManager _navigationManager
+
+
+<EditForm Model="_pageToCreate" OnValidSubmit="CreatePageF">
+
+    <select class="form-select" aria-label="Default select example">
+        @foreach (var item in _mySites)
+        {
+           <option value=@item.SiteName>@item.SiteName</option> 
+        }
+
+        @*
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        *@
+        
+    </select>
+
+    <div class="mb-3">
+        <label for="pageBody" class="form-label">Email address</label>
+        <input type="text" @bind="_pageToCreate.Body" class="form-control" id="editor" aria-describedby="pageBodyHelp">
+    </div>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+</EditForm>
+
+
+@code{
+
+    /// Page to be save Object
+    private CustomPage _pageToCreate = new CustomPage{
+
+    };
+
+    /// List of all the websites a the user owns
+    private List<CustomSite> _mySites = new List<CustomSite>();
+
+    /// Function called after first Render
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            /// Get all the Websites
+            _mySites = await _appDBContext.CustomSites.ToListAsync();
+            //Create Editor when the Page has been rendered
+            StartEditor_F();
+            //
+            StateHasChanged();
+
+        }
+    }
+
+
+    /// Function/Method for Creating a Page
+    private async Task CreatePageF(){
+        //Call Javascript Function to Get Save Editor Data
+        _pageToCreate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
+        //
+        await _appDBContext.CustomPages.AddAsync(_pageToCreate);
+        await _appDBContext.SaveChangesAsync();
+        _navigationManager.NavigateTo("/admin/pages/normalpages");
+    }
+
+    public async void StartEditor_F()
+    {
+
+        await _jsruntime.InvokeVoidAsync("StartEditor_F");
+    }
+
+
+}

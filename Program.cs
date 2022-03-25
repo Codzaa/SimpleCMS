@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddScoped<CustomPageService>();
+//builder.Services.AddScoped<CustomPageService>();
+builder.Services.AddSingleton<UserService>();
 /// Postgre SQL
 var myConnString = builder.Configuration.GetConnectionString("myconn");
 builder.Services.AddDbContext<AppDBContext>(item => item.UseNpgsql(myConnString));

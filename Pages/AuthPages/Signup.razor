@@ -2,19 +2,21 @@
 @using Data
 @inject AppDBContext _appDBContext
 @inject NavigationManager _navigationManager
+@inject UserService _userService
 @using Microsoft.EntityFrameworkCore;
 
 <EditForm Model="_userToCreate" OnValidSubmit="CreateUser">
 <h2 class="text-center">Sign Up</h2>
+
     <div class="mb-3">
       <label for="Username" class="form-label">Email address</label>
-      <input @bind="_userToCreate.UserName" type="text" class="form-control" id="Username" aria-describedby="UsernameHelp">
-      
+      <input @bind="_userToCreate.UserName" type="text" class="form-control" id="Username" aria-describedby="UsernameHelp"> 
       <div id="UsernameHelp" class="form-text">Choose a unique Username</div>
     </div>
+
     <div class="mb-3">
       <label for="Password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="Password">
+      <input @bind="_userToCreate.UserPassword" type="password" class="form-control" id="Password">
     </div>
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -25,17 +27,20 @@
 
     private CustomUser _userToCreate = new CustomUser
     {
-       UserName = "Username",
-       UserPassword = "Password",
-       UserNickName = "Usernickname",
+       UserName = "",
+       UserPassword = "",
+       UserNickName = "",
     };
 
+    /// Function/Method for Creating a User
     private async Task CreateUser(){
         /// Check if the user already exists in the Database
         var doesUserExist = await UserExits();
         ///
         if(!doesUserExist){
             Console.WriteLine("User Does not Exits");
+            /// Set Global User
+            await SetUser(_userToCreate);
             await _appDBContext.CustomUsers.AddAsync(_userToCreate);
             await _appDBContext.SaveChangesAsync();
             _navigationManager.NavigateTo("/dashboard/home");
@@ -46,6 +51,7 @@
         
     }
 
+    /// Checks if the User name has been already used
     private async Task<bool> UserExits(){
         bool result = false;
         var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToCreate.UserName));
@@ -53,5 +59,12 @@
             result = true;
         }
         return result;
+    }
+
+    /// Set Global User
+    private async Task SetUser(CustomUser user){
+        /// await _userService.SetGlobalUser(user);
+        _userService.GlobalUser = user;
+        Console.WriteLine("GLOBAL USER IS " + _userService.GlobalUser.UserName);
     }
 }

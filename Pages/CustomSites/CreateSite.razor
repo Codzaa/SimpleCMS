@@ -1,0 +1,51 @@
+@page "/newsite"
+@using cms.Data
+@using Microsoft.JSInterop
+@inject AppDBContext _appDBContext
+@inject NavigationManager _navigationManager
+@inject IJSRuntime _jsruntime
+@inject UserService _userService
+@using Microsoft.EntityFrameworkCore
+
+<EditForm Model="_siteToCreate" OnValidSubmit="CreateSiteF">
+
+    <div class="mb-3">
+        <label for="siteName" class="form-label">Site Name</label>
+        <input @bind="_siteToCreate.SiteName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
+        <div id="siteNameHelp" class="form-text">Choose an interesting Site Name</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="siteDescription" class="form-label">Site Description</label>
+        <input @bind="_siteToCreate.SiteDescription" type="text" class="form-control" id="siteDescription" aria-describedby="siteDescriptionHelp">
+        <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
+    </div>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <button class="btn btn-primary" type="submit">Save</button>
+</EditForm>
+
+@code{
+
+    /// Function that runs after the first render
+    /// Runs once
+    //[Inject] ApplicationDbContext ApplicationDbContext { get; set; }
+    private CustomSite _siteToCreate = new CustomSite
+    {
+       SiteName = "",
+       SiteDescription = "",
+    };
+    private async Task CreateSiteF()
+    {
+        /// Set the Owner Id
+        /// To the user who is logged in
+        _siteToCreate.OwnerId = _userService.GlobalUser.Id;
+        ///
+        await _appDBContext.CustomSites.AddAsync(_siteToCreate);
+        await _appDBContext.SaveChangesAsync();
+        _navigationManager.NavigateTo("/dashboard/home");
+        
+
+    }
+}
