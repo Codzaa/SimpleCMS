@@ -3,7 +3,7 @@
 @using Microsoft.EntityFrameworkCore
 @inject AppDBContext _appDbContext
 @inject UserService _userService
-
+@inject NavigationManager _navigationManager
 
 <br>
 
@@ -15,11 +15,31 @@
 
 @if( _mysites != null){
 
-    foreach (var site in _mysites)
+    
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Site Name</th>
+      <th scope="col">Site Description</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+    @foreach (var site in _mysites)
     {
         //Show the Sites
-        <li>@site.SiteName </li>
+        <td>@site.SiteName</td>
+        <td>@site.SiteDescription</td>
+        <button class="btn btn-warning">
+            <td @onclick="@(e => GoToPage(@site.Id))">Update</td>
+        </button>
     }
+    </tr>
+  </tbody>
+
+</table>
 }
 
 @code{
@@ -35,6 +55,12 @@
         var sites = await _appDbContext.CustomSites.ToListAsync();
         Console.WriteLine("My Id" + _userService.GlobalUser.Id);
         _mysites = sites.FindAll(element => element.OwnerId.Equals(_userService.GlobalUser.Id));
+    }
+
+    private async Task GoToPage(int pageId){
+        //
+        _navigationManager.NavigateTo("/updatesite/" + pageId);
+        //
     }
 }
 

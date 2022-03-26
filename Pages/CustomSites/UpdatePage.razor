@@ -1,0 +1,75 @@
+@page "/updatepage/{id:int}"
+@using cms.Data
+@using Microsoft.JSInterop
+@using Microsoft.EntityFrameworkCore
+@inject AppDBContext _appDBContext
+@inject IJSRuntime _jsruntime
+@inject UserService _userService
+@inject NavigationManager _naviagtionManager
+
+@if(_pageToUpdate != null){
+<EditForm Model="_pageToUpdate" OnValidSubmit="UpdateCurrentPage">
+
+    <div class="mb-3">
+        <label for="pageName" class="form-label">Page Name</label>
+        <input @bind="_pageToUpdate.PageName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
+        <div id="siteNameHelp" class="form-text">Choose an interesting page Name</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="PageHeading" class="form-label">Page Heading</label>
+        <input @bind="_pageToUpdate.PageHeading" type="text" class="form-control" id="PageHeading" aria-describedby="PageHeadingHelp">
+        <div id="PageHeadingHelp" class="form-text">Whats your Page about</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="pageBody" class="form-label">Page Body</label>
+        <input type="text" @bind="_pageToUpdate.Body" class="form-control" id="editor" aria-describedby="pageBodyHelp">
+    </div>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <button class="btn btn-primary" type="submit">Save</button>
+</EditForm>
+}
+
+@code{
+    [Parameter] public int id { get; set; }
+    //
+    private CustomPage? _pageToUpdate;
+    protected override async Task OnParametersSetAsync()
+    {
+        _pageToUpdate = await _appDBContext.CustomPages.FindAsync(id);
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //
+            StartEditor_F();
+            //
+            StateHasChanged();
+
+        }
+        //
+        //return base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async void StartEditor_F()
+    {
+        //Call Javascript function to create an Editor with Some Data in it.
+        await _jsruntime.InvokeVoidAsync("StartEditor_F2", _pageToUpdate.Body);
+    }
+
+    private async Task UpdateCurrentPage()
+    {
+        //Call Javascript Function to Get Save Editor Data
+        _pageToUpdate.Body = await _jsruntime.InvokeAsync<string>("SaveEditorData_F");
+        //
+        _appDBContext.CustomPages.Update(_pageToUpdate);
+        await _appDBContext.SaveChangesAsync();
+        _naviagtionManager.NavigateTo("/dashboard/home");
+    }
+}

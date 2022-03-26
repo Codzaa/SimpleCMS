@@ -47,6 +47,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3VzdG9tU2l0ZXMvTmV3UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/CustomSites/UpdatePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3VzdG9tU2l0ZXMvVXBkYXRlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/CustomSites/UpdateSite.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3VzdG9tU2l0ZXMvVXBkYXRlU2l0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/voiceless/Documents/Projects/Tanya/App/cms/Pages/Dashboard/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkL0hvbWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
