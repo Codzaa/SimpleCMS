@@ -13,6 +13,8 @@ namespace cms.Data
         [Required]
         public string? SiteDescription{get;set;}
         public string? SiteHomePage{get;set;}
+
+        public string? SiteBackgroundColor{get;set;}
         
     }
 }

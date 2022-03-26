@@ -1,8 +1,10 @@
 @page "/login"
+@layout AuthLayout
 @using Data
 @inject AppDBContext _appDBContext
 @inject NavigationManager _navigationManager
 @inject UserService _userService
+@inject AuthService _authService
 @using Microsoft.EntityFrameworkCore;
 
 <EditForm Model="_userToLogin" OnValidSubmit="LoginF">
@@ -21,6 +23,7 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
     <button type="submit" class="btn btn-primary">Login</button>
+    <button @onclick="GotoPage" class="btn btn-primary">Sign Up</button>
 </EditForm>
 
 @code{
@@ -53,7 +56,13 @@
     private async Task SetUser(CustomUser user){
         /// await _userService.SetGlobalUser(user);
         _userService.GlobalUser = user;
+        //
+        _authService.isAuthourized = true;
         Console.WriteLine("GLOBAL USER IS " + _userService.GlobalUser.UserName);
+    }
+
+    private async Task GotoPage(){
+      _navigationManager.NavigateTo("/signup");
     }
 }
 

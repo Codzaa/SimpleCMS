@@ -12,6 +12,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddScoped<CustomPageService>();
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<AuthService>();
 /// Postgre SQL
 var myConnString = builder.Configuration.GetConnectionString("myconn");
 builder.Services.AddDbContext<AppDBContext>(item => item.UseNpgsql(myConnString));

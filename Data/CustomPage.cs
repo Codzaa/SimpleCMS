@@ -15,6 +15,7 @@ namespace cms.Data
         [Required]
         public string? PageHeading { get; set; }
         public string? Body { get; set; }
+        public string? PageBackgroundColor{get;set;}
 
         
     }

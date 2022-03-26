@@ -4,7 +4,7 @@
 @inject AppDBContext _appDbContext
 @inject UserService _userService
 @inject NavigationManager _navigationManager
-
+@inject AuthService _authService
 <br>
 
 @if( _mysites.Count == 0){
@@ -26,17 +26,18 @@
   </thead>
 
   <tbody>
-    <tr>
+    
     @foreach (var site in _mysites)
     {
-        //Show the Sites
+      <tr>
         <td>@site.SiteName</td>
         <td>@site.SiteDescription</td>
         <button class="btn btn-warning">
             <td @onclick="@(e => GoToPage(@site.Id))">Update</td>
         </button>
+      </tr>
     }
-    </tr>
+   
   </tbody>
 
 </table>
@@ -50,6 +51,12 @@
     private List<CustomSite> _mysites = new List<CustomSite>();
     protected override async Task OnInitializedAsync()
     {
+      /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
         //await _appDbContext.CustomSites.Find(element => element.OwnerId == _userService.GlobalUser.Id);
         //var user = await _appDBContext.CustomUsers.FirstOrDefaultAsync(element => element.UserName.Equals(_userToLogin.UserName));
         var sites = await _appDbContext.CustomSites.ToListAsync();

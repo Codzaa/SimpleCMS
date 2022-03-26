@@ -1,35 +1,47 @@
 @page "/newsite"
 @using cms.Data
 @using Microsoft.JSInterop
+@using Microsoft.EntityFrameworkCore
 @inject AppDBContext _appDBContext
 @inject NavigationManager _navigationManager
 @inject IJSRuntime _jsruntime
 @inject UserService _userService
-@using Microsoft.EntityFrameworkCore
+@inject AuthService _authService
 
-<EditForm Model="_siteToCreate" OnValidSubmit="CreateSiteF">
+@if(_authService.isAuthourized){
+    <EditForm Model="_siteToCreate" OnValidSubmit="CreateSiteF">
 
-    <div class="mb-3">
-        <label for="siteName" class="form-label">Site Name</label>
-        <input @bind="_siteToCreate.SiteName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
-        <div id="siteNameHelp" class="form-text">Choose an interesting Site Name</div>
-    </div>
+        <div class="mb-3">
+            <label for="siteName" class="form-label">Site Name</label>
+            <input @bind="_siteToCreate.SiteName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
+            <div id="siteNameHelp" class="form-text">Choose an interesting Site Name</div>
+        </div>
 
-    <div class="mb-3">
-        <label for="siteDescription" class="form-label">Site Description</label>
-        <input @bind="_siteToCreate.SiteDescription" type="text" class="form-control" id="siteDescription" aria-describedby="siteDescriptionHelp">
-        <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
-    </div>
+        <div class="mb-3">
+            <label for="siteDescription" class="form-label">Site Description</label>
+            <input @bind="_siteToCreate.SiteDescription" type="text" class="form-control" id="siteDescription" aria-describedby="siteDescriptionHelp">
+            <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
+        </div>
 
-    <div class="mb-3">
-        <label for="homeView" class="form-label">Home View</label>
-        <input type="text" @bind="_siteToCreate.SiteHomePage" class="form-control" id="editor" aria-describedby="homeViewHelp">
-    </div>
+        <div class="mb-3">
+            <input type="color" id="head" name="head"
+                @bind="_siteToCreate.SiteBackgroundColor">
+            <label for="head">Background Color</label>
+        </div>
 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <button class="btn btn-primary" type="submit">Save</button>
-</EditForm>
+        <div class="mb-3">
+            <label for="homeView" class="form-label">Home View</label>
+            <input type="text" @bind="_siteToCreate.SiteHomePage" class="form-control" id="editor" aria-describedby="homeViewHelp">
+        </div>
+
+
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <button class="btn btn-primary" type="submit">Save</button>
+    </EditForm>
+ }
+
 
 @code{
 
@@ -42,6 +54,17 @@
        SiteDescription = "",
     };
 
+    protected override async Task OnInitializedAsync()
+    {
+      
+        /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
+
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -55,7 +78,8 @@
     }
     public async void StartEditor_F()
     {
-
+        ///
+        _siteToCreate.SiteBackgroundColor = "#e66465";
         await _jsruntime.InvokeVoidAsync("StartEditor_F");
     }
     private async Task CreateSiteF()

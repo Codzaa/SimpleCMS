@@ -1,4 +1,5 @@
 @page "/site/{sitename}"
+@layout FirstLayout
 @using cms.Data
 @using Microsoft.EntityFrameworkCore
 @inject AppDBContext _appDbContext
@@ -7,6 +8,9 @@
 
 
 @if(_site != null){
+    <div style="background-color: @_site.SiteBackgroundColor;">
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
     <a class="navbar-brand" @onclick="@(e => GoToPage(0))" >@_site.SiteName</a>
@@ -30,7 +34,7 @@
                         <li><hr class="dropdown-divider"></li> 
                     }
                     
-                    <li><a class="dropdown-item" href="#">Default</a></li>
+                    <li><a class="dropdown-item"></a></li>
                 </ul>
             }
         </li>
@@ -39,13 +43,14 @@
 </div>
 </nav>
     <br>
-    <body>
+    <body style="background-color: @_site.SiteBackgroundColor;">
         @if(!customPageActive){
             @((MarkupString)_site.SiteHomePage)
         }else{
             @((MarkupString)_activePage.Body)
         }
     </body>
+        </div>
 }
 
 

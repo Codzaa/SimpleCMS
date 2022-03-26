@@ -6,64 +6,72 @@
 @inject IJSRuntime _jsruntime
 @inject UserService _userService
 @inject NavigationManager _navigationManager
+@inject AuthService _authService
 
 
-@if(_pageToUpdate != null){
-<EditForm Model="_pageToUpdate" OnValidSubmit="UpdatePage">
+@if(_authService.isAuthourized){
+    @if(_pageToUpdate != null){
+    <EditForm Model="_pageToUpdate" OnValidSubmit="UpdatePage">
 
-    <div class="mb-3">
-        <label for="siteName" class="form-label">Site Name</label>
-        <input @bind="_pageToUpdate.SiteName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
-        <div id="siteNameHelp" class="form-text">Choose an interesting Site Name</div>
-    </div>
+        <div class="mb-3">
+            <label for="siteName" class="form-label">Site Name</label>
+            <input @bind="_pageToUpdate.SiteName" type="text" class="form-control" id="siteName" aria-describedby="siteNameHelp">
+            <div id="siteNameHelp" class="form-text">Choose an interesting Site Name</div>
+        </div>
 
-    <div class="mb-3">
-        <label for="siteDescription" class="form-label">Site Description</label>
-        <input @bind="_pageToUpdate.SiteDescription" type="text" class="form-control" id="siteDescription" aria-describedby="siteDescriptionHelp">
-        <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
-    </div>
+        <div class="mb-3">
+            <label for="siteDescription" class="form-label">Site Description</label>
+            <input @bind="_pageToUpdate.SiteDescription" type="text" class="form-control" id="siteDescription" aria-describedby="siteDescriptionHelp">
+            <div id="siteDescriptionHelp" class="form-text">Whats your Website about</div>
+        </div>
 
-    <div class="mb-3">
-        <label for="homeView" class="form-label">Home View</label>
-        <input type="text" @bind="_pageToUpdate.SiteHomePage" class="form-control" id="editor" aria-describedby="homeViewHelp">
-    </div>
+        <div class="mb-3">
+            <input type="color" id="head" name="head"
+                @bind="_pageToUpdate.SiteBackgroundColor">
+            <label for="head">Background Color</label>
+        </div>
 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <button class="btn btn-primary" type="submit">Save</button>
-</EditForm>
-}
+        <div class="mb-3">
+            <label for="homeView" class="form-label">Home View</label>
+            <input type="text" @bind="_pageToUpdate.SiteHomePage" class="form-control" id="editor" aria-describedby="homeViewHelp">
+        </div>
 
-<br>
-
-@if(_customPages != null){
-    @foreach (var item in _customPages)
-    {
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Page Name</th>
-      <th scope="col">Page Heading</th>
-      <th scope="col">Options</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-    @foreach (var mypage in _customPages)
-    {
-        //Show the Sites
-        <td>@mypage.PageName</td>
-        <td>@mypage.PageHeading</td>
-        <button class="btn btn-warning">
-            <td @onclick="@(e => GoToPage(@mypage.Id))">Update</td>
-        </button>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <button class="btn btn-primary" type="submit">Save</button>
+    </EditForm>
     }
-    </tr>
-  </tbody>
 
-</table>
+    <br>
+
+    @if(_customPages != null){
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Page Name</th>
+        <th scope="col">Page Heading</th>
+        <th scope="col">Options</th>
+        </tr>
+    </thead>
+
+    <tbody>
+       
+        @foreach (var mypage in _customPages)
+        {
+            <tr>
+            <td>@mypage.PageName</td>
+            <td>@mypage.PageHeading</td>
+            <button class="btn btn-warning">
+                <td @onclick="@(e => GoToPage(@mypage.Id))">Update</td>
+            </button>
+             </tr>
+        }
+       
+    </tbody>
+
+    </table>
     }
+
 }
 
 
@@ -77,6 +85,12 @@
     private List<CustomPage> _customPages = new List<CustomPage>();
     protected override async Task OnParametersSetAsync()
     {
+        /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
         _pageToUpdate = await _appDBContext.CustomSites.FindAsync(id);
         var result = await _appDBContext.CustomPages.ToListAsync();
         _customPages = result.FindAll(element => element.SiteId.Equals(id));

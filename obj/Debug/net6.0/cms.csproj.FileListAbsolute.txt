@@ -34,3 +34,5 @@
 /home/voiceless/Documents/Projects/Tanya/App/cms/bin/Debug/net6.0/Npgsql.dll
 /home/voiceless/Documents/Projects/Tanya/App/cms/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /home/voiceless/Documents/Projects/Tanya/App/cms/obj/Debug/net6.0/cms.csproj.CopyComplete
+/home/voiceless/Documents/Projects/Tanya/App/cms/obj/Debug/net6.0/scopedcss/Shared/AuthLayout.razor.rz.scp.css
+/home/voiceless/Documents/Projects/Tanya/App/cms/obj/Debug/net6.0/scopedcss/Shared/FirstLayout.razor.rz.scp.css

@@ -1,5 +1,6 @@
 ﻿@page "/"
-
+@layout AuthLayout
+@inject NavigationManager _navigationManager
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
@@ -7,3 +8,22 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="@(e => GotoPage(1))" class="btn btn-primary">Sign Up</button>
+<button @onclick="@(e => GotoPage(2))" class="btn btn-primary">Login</button>
+
+@code{
+    private async Task GotoPage(int pageId){
+        switch (pageId)
+        {
+            case 1:
+                _navigationManager.NavigateTo("/signup");
+                break;
+            case 2:
+                _navigationManager.NavigateTo("/login");
+                break;
+            default:
+                break;
+        }
+        
+    }
+}

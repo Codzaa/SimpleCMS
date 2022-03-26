@@ -1,0 +1,44 @@
+@page "/dashboard/myprofile"
+@using cms.Data
+@inject UserService _userService
+@inject NavigationManager _navigationManager
+@inject AuthService _authService
+
+@if(_authService.isAuthourized){
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Username: @_userService.GlobalUser.UserName</li>
+      <li class="list-group-item">Password: @_userService.GlobalUser.UserPassword</li>
+    </ul>
+    <div class="card-body">
+      <button class="card-link btn btn-primary" @onclick="Logout">Logout</button>
+    </div>
+  </div>
+}
+
+
+
+@code{
+
+    protected override async Task OnInitializedAsync()
+    {
+        /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
+    }
+
+    private async Task Logout(){
+        /// 
+        _userService.GlobalUser = new CustomUser();
+        _authService.isAuthourized = false;
+        _navigationManager.NavigateTo("/login");
+    }
+}

@@ -6,43 +6,46 @@
 @inject AppDBContext _appDBContext
 @inject NavigationManager _navigationManager
 @inject UserService _userService
+@inject AuthService _authService
 
+@if(_authService.isAuthourized){ 
+    <EditForm Model="_pageToCreate" OnValidSubmit="CreatePageF">
 
-<EditForm Model="_pageToCreate" OnValidSubmit="CreatePageF">
-
-    <InputSelect @bind-Value="CurrentSiteId" @onchange="CheckSiteNameF" class="form-control" col-3>
-    <label for="pageSiteId" class="form-label">Choose Website</label>
-        @if (_mySites!= null){
-            @foreach (var site in _mySites){
-                <option value =@site.Id.ToString()>@site.SiteName + @site.Id</option>
+        <InputSelect @bind-Value="CurrentSiteId" @onchange="CheckSiteNameF" class="form-control" col-3>
+        <label for="pageSiteId" class="form-label">Choose Website</label>
+            @if (_mySites!= null){
+                @foreach (var site in _mySites){
+                    <option value =@site.Id.ToString()>@site.SiteName</option>
+                }
             }
-        }
-    </InputSelect>
+        </InputSelect>
 
-    <div class="mb-3">
-        <label for="pageName" class="form-label">Page Name</label>
-        <input type="text" @bind="_pageToCreate.PageName" class="form-control" aria-describedby="PageNameHelp">
-    </div>
+        <div class="mb-3">
+            <label for="pageName" class="form-label">Page Name</label>
+            <input type="text" @bind="_pageToCreate.PageName" class="form-control" aria-describedby="PageNameHelp">
+        </div>
 
-    <div class="mb-3">
-        <label for="pageHeading" class="form-label">Page Heading</label>
-        <input type="text" @bind="_pageToCreate.PageHeading" class="form-control" aria-describedby="PageHeadingHelp">
-    </div>
+        <div class="mb-3">
+            <label for="pageHeading" class="form-label">Page Heading</label>
+            <input type="text" @bind="_pageToCreate.PageHeading" class="form-control" aria-describedby="PageHeadingHelp">
+        </div>
 
-    
+        
 
-    <div class="mb-3">
-        <label for="pageHeading" class="form-label">Page Body</label>
-        <input type="text" @bind="_pageToCreate.Body" class="form-control" id="editor" aria-describedby="PageHeadingHelp">
-    </div>
-    
+        <div class="mb-3">
+            <label for="pageHeading" class="form-label">Page Body</label>
+            <input type="text" @bind="_pageToCreate.Body" class="form-control" id="editor" aria-describedby="PageHeadingHelp">
+        </div>
+        
 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-    <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
 
-</EditForm>
+    </EditForm>
+}
+
 
 
 @code{
@@ -69,7 +72,17 @@
 
     /// List of all the websites a the user owns
     private List<CustomSite> _mySites = new List<CustomSite>();
+    protected override async Task OnInitializedAsync()
+    {
+      
+        /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
 
+    }
     /// Function called after first Render
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

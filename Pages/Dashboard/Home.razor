@@ -1,25 +1,46 @@
 @page "/dashboard/home"
 @using cms.Data
 @inject UserService _userService
+@inject NavigationManager _navigationManager
+@inject AuthService _authService
 
-<div class="card text-center">
-  <div class="card-header">
-    Welcome to your Dashboard @_userService.GlobalUser.UserName @_userService.GlobalUser.Id @_userService.GlobalUser.UserPassword
+@if(_authService.isAuthourized){ 
+
+  <div class="card text-center">
+    <div class="card-header">
+      Welcome, 欢迎
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Welcome to your Dashboard @_userService.GlobalUser.UserName</h5>
+      <p class="card-text">This is a Simple Content Management System created by Tanya</p>
+      <a href="#" class="btn btn-primary">Get in touch</a>
+    </div>
+    <div class="card-footer text-muted">
+      Warning
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+
+  <MySites/>
+
+}
 
 
-<MySites/>
+
+
 
 @code{
 
     
+    //private bool isAuthourized = false;
+    protected override async Task OnInitializedAsync()
+    {
+      
+        /// Check if user is Authourized
+        if(!_authService.isAuthourized){
+          ///Not Logged in
+          ///Reroute to Auth Page
+          _navigationManager.NavigateTo("/login");
+        }
+
+    }
 }
